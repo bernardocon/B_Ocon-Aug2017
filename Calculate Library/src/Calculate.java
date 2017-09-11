@@ -44,8 +44,8 @@ public class Calculate {
 		}
 		
 		//This method converts mixed number into an improper fraction
-		public static int toImproperFrac (int a, int b, int c) {
-			return()
+		public static String toImproperFrac (int a, int b, int c) {
+			return (((a * c)+ b)+ "/" +c);
 		}
 	}
 

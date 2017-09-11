@@ -9,5 +9,6 @@ public class DoMath {
 		System.out.println(Calculate.square(-5));
 		System.out.println(Calculate.cube(2));
 		System.out.println(Calculate.average(5,5));
+		System.out.println(Calculate.toImproperFrac(a, b, c));
 	}
 }
