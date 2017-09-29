@@ -4,7 +4,7 @@
 
 public class Calculate {
 
-private static final int n = 0;
+public static final int n = 0;
 //This method takes integer and returns its square
 	
 	public static int square (int operand) {
@@ -65,7 +65,7 @@ private static final int n = 0;
 		}
 		
 		//This is part 2 Methods with Conditionals
-		
+		//This method determines whether or not one integer is divisible by another
 		public static boolean isDivisibleBy (int a, int b) {
 		if ( a % b == 0 ) {
 		return (true);	
@@ -85,7 +85,7 @@ private static final int n = 0;
 		}
 		
 		}
-		//This method retuns the max of two doubles
+		//This method returns the max of two doubles
 		public static double max (double operand1, double operand2) {
 			if (operand1 > operand2) {
 				return (operand1);
@@ -95,6 +95,7 @@ private static final int n = 0;
 			}
 		}
 		//Max #2
+		//This method accepts three doubles and returns the greater value of the three
 		public static double max (double a, double b, double c) {
 			if (a > b && a > c) {
 				return (a);
@@ -106,7 +107,7 @@ private static final int n = 0;
 			}
 		}
 		
-		//This method returns the smaller of two values
+		//This method returns the smaller of two values of integers
 		public static int min (int operand1, int operand2) {
 			if (operand1 > operand2) {
 				return operand2;
@@ -115,7 +116,7 @@ private static final int n = 0;
 				}
 			}
 			
-			//this methods rounds a double correcrtly to 2 decimal steps
+			//this methods rounds a double correctly to 2 decimal steps
 			public static double round2 (double number) {
 				double lastDigit = number*1000%10;
 				if(lastDigit <5) {
@@ -141,13 +142,21 @@ private static final int n = 0;
 				
 		}
 			//This method returns the factorial of the value passed
-			public static int factorial (int i1) {
-				for (int i = 1; i <= n; i++) {
-			           result = result * i;
-			       }
+			public static int factorial(int n) {
+				if (n < 0) {
+					throw new IllegalArgumentException("Cannot find the factorial of a negative number");
+				}
+				int result = 1;
+				if (n == 0) {
+					result = 1;
+				}
+				while(n > 0) {
+					result = n * result;
+					n--;
+				}
 				return result;
-		}
-			//This method 
+			}
+			//This method determines whether or not an integer is prime returning a boolean
 			public static boolean isPrime(int n) {
 			    //check if n is a multiple of 2
 			    if (n%2==0) return false;
@@ -158,7 +167,7 @@ private static final int n = 0;
 			    }
 			    return true;
 			}
-			 // This method 
+			 // This method finds greatest common factors of two positive integers
 			 public static int gcf(int num1, int num2) {
 			        
 			int greatestCommonFactor = 1;
@@ -169,7 +178,7 @@ private static final int n = 0;
 			}
 			return (greatestCommonFactor);
 			}
-
+			 //This method returns an approximation of the square root of the value passed
 			 public static double sqrt (double num1) {
 				 double i = 0;
 				 double sqrt = num1/2.0;
@@ -183,8 +192,26 @@ private static final int n = 0;
 				 sqrt = round2(sqrt);
 				 return sqrt;
 			 }
-				 
-				
+			//This method uses the coefficients of a quadratic equation in standard form and approximates real roots	 
+			 public static String quadForm (int a, int b, int c) {	
+					if(discriminant(a, b, c) < 0 ) {
+						return "No real roots";
+					}else if (discriminant(a, b, c) == 0) {
+						double realroot = -b / (2.0 * a);
+						return "" + realroot;
+					}else {
+						double sqrt = sqrt(discriminant(a, b, c));
+						double root1 = (-b + sqrt) / (2 * a);
+						double root2 = (-b - sqrt) / (2 * a);
+						double roundroot1 = round2(root1);
+						double roundroot2 = round2(root2);
+						if (min(roundroot1, roundroot2) == roundroot1) {
+							return roundroot1 + " and " + roundroot2;
+						}else {
+							return roundroot2 + " and " + roundroot1;
+						}
+					}
+				}	
 	}
 
 
